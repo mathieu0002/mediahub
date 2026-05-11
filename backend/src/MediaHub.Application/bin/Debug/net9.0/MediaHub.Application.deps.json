@@ -12,6 +12,7 @@
           "FluentValidation.DependencyInjectionExtensions": "11.10.0",
           "MediaHub.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.0"
         },
         "runtime": {
