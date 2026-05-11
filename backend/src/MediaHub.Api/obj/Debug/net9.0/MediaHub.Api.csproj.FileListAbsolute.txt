@@ -37,3 +37,7 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/obj/Debug/net9.0/MediaHub.Api.pdb
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/obj/Debug/net9.0/MediaHub.Api.genruntimeconfig.cache
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/obj/Debug/net9.0/ref/MediaHub.Api.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/FluentValidation.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll

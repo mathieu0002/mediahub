@@ -101,3 +101,15 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/obj/Debug/net9.0/MediaHub.UnitTests.pdb
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/obj/Debug/net9.0/MediaHub.UnitTests.genruntimeconfig.cache
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/obj/Debug/net9.0/ref/MediaHub.UnitTests.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/FluentValidation.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Logging.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
