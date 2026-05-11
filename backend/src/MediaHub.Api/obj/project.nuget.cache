@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "LgjQigNzh+w=",
+  "success": true,
+  "projectFilePath": "/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/MediaHub.Api.csproj",
+  "expectedPackageFiles": [
+    "/Users/servonnm/.nuget/packages/microsoft.aspnetcore.openapi/9.0.14/microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

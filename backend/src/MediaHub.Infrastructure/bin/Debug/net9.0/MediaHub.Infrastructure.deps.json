@@ -1,0 +1,56 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "MediaHub.Infrastructure/1.0.0": {
+        "dependencies": {
+          "MediaHub.Application": "1.0.0",
+          "MediaHub.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MediaHub.Infrastructure.dll": {}
+        }
+      },
+      "MediaHub.Application/1.0.0": {
+        "dependencies": {
+          "MediaHub.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MediaHub.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MediaHub.Domain/1.0.0": {
+        "runtime": {
+          "MediaHub.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MediaHub.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MediaHub.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MediaHub.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

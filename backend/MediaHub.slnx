@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MediaHub.Api/MediaHub.Api.csproj" />
+    <Project Path="src/MediaHub.Application/MediaHub.Application.csproj" />
+    <Project Path="src/MediaHub.Domain/MediaHub.Domain.csproj" />
+    <Project Path="src/MediaHub.Infrastructure/MediaHub.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MediaHub.UnitTests/MediaHub.UnitTests.csproj" />
+  </Folder>
+</Solution>

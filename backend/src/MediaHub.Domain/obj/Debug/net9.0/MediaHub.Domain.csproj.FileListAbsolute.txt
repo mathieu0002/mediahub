@@ -1,0 +1,11 @@
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/bin/Debug/net9.0/MediaHub.Domain.deps.json
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/bin/Debug/net9.0/MediaHub.Domain.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/bin/Debug/net9.0/MediaHub.Domain.pdb
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.AssemblyInfoInputs.cache
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.AssemblyInfo.cs
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.csproj.CoreCompileInputs.cache
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/refint/MediaHub.Domain.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.pdb
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/ref/MediaHub.Domain.dll
