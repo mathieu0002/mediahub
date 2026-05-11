@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LgjQigNzh+w=",
+  "dgSpecHash": "RnVPwDjncTs=",
   "success": true,
   "projectFilePath": "/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/MediaHub.Api.csproj",
   "expectedPackageFiles": [
+    "/Users/servonnm/.nuget/packages/fluentvalidation/11.10.0/fluentvalidation.11.10.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.aspnetcore.openapi/9.0.14/microsoft.aspnetcore.openapi.9.0.14.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.0/microsoft.extensions.logging.abstractions.9.0.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
   ],
   "logs": []

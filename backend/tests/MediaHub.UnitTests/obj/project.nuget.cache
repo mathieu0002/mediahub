@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "yYjRum5im6s=",
+  "dgSpecHash": "xTI3zBuImLs=",
   "success": true,
   "projectFilePath": "/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/MediaHub.UnitTests.csproj",
   "expectedPackageFiles": [
     "/Users/servonnm/.nuget/packages/coverlet.collector/6.0.2/coverlet.collector.6.0.2.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/fluentvalidation/11.10.0/fluentvalidation.11.10.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.codecoverage/17.12.0/microsoft.codecoverage.17.12.0.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.0/microsoft.extensions.logging.abstractions.9.0.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.net.test.sdk/17.12.0/microsoft.net.test.sdk.17.12.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.testplatform.objectmodel/17.12.0/microsoft.testplatform.objectmodel.17.12.0.nupkg.sha512",
     "/Users/servonnm/.nuget/packages/microsoft.testplatform.testhost/17.12.0/microsoft.testplatform.testhost.17.12.0.nupkg.sha512",

@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "BhzZ1aS1tjw=",
+  "dgSpecHash": "Tj903fAbKzE=",
   "success": true,
   "projectFilePath": "/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Application/MediaHub.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/servonnm/.nuget/packages/fluentvalidation/11.10.0/fluentvalidation.11.10.0.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/9.0.0/microsoft.extensions.dependencyinjection.abstractions.9.0.0.nupkg.sha512",
+    "/Users/servonnm/.nuget/packages/microsoft.extensions.logging.abstractions/9.0.0/microsoft.extensions.logging.abstractions.9.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
