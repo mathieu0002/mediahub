@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http.Resilience;
 using System.Net.Http.Headers;
+using Npgsql;
 
 namespace MediaHub.Infrastructure;
 
@@ -18,12 +19,16 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services, IConfiguration config)
     {
-        // === Postgres ===
+// === Postgres ===
         var connString = config.GetConnectionString("Postgres")
-            ?? throw new InvalidOperationException("ConnectionStrings:Postgres manquant");
+                         ?? throw new InvalidOperationException("ConnectionStrings:Postgres manquant");
+
+        var dataSourceBuilder = new NpgsqlDataSourceBuilder(connString);
+        dataSourceBuilder.EnableDynamicJson();  // <-- la ligne qui résout tout
+        var dataSource = dataSourceBuilder.Build();
 
         services.AddDbContext<AppDbContext>(opt =>
-            opt.UseNpgsql(connString, npg =>
+            opt.UseNpgsql(dataSource, npg =>
                 npg.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
 
         services.AddScoped<IAppDbContext>(sp => sp.GetRequiredService<AppDbContext>());

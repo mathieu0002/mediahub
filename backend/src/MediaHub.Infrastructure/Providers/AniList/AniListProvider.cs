@@ -83,7 +83,7 @@ public class AniListProvider : IMediaProvider
         try
         {
             var payload = new { query, variables };
-            var response = await _http.PostAsJsonAsync("", payload, ct);
+            var response = await _http.PostAsJsonAsync("https://graphql.anilist.co", payload, ct);
 
             if (!response.IsSuccessStatusCode)
             {

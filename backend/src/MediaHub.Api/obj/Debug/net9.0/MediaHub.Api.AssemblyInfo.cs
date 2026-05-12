@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("670f9233-6847-4f26-8c89-86b8b05d1e6b")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("MediaHub.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc47807ba532d659d9c2f54213176e42aadf523d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1f0691ab2a289b0f9eea213402d8a329e81ef47")]
 [assembly: System.Reflection.AssemblyProductAttribute("MediaHub.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MediaHub.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
