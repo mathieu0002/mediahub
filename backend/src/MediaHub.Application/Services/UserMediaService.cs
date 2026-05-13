@@ -1,6 +1,7 @@
 using MediaHub.Application.Common;
 using MediaHub.Application.DTOs;
 using MediaHub.Application.DTOs.Requests;
+using MediaHub.Application.Interfaces.Caching;
 using MediaHub.Application.Interfaces.Persistence;
 using MediaHub.Application.Interfaces.Services;
 using MediaHub.Application.Mappers;
@@ -15,15 +16,18 @@ public class UserMediaService : IUserMediaService
 {
     private readonly IAppDbContext _db;
     private readonly IMediaSearchService _searchService;
+    private readonly ICacheService _cache;
     private readonly ILogger<UserMediaService> _logger;
 
     public UserMediaService(
         IAppDbContext db,
         IMediaSearchService searchService,
+        ICacheService cache,
         ILogger<UserMediaService> logger)
     {
         _db = db;
         _searchService = searchService;
+        _cache = cache;
         _logger = logger;
     }
 
@@ -68,6 +72,7 @@ public class UserMediaService : IUserMediaService
         await _db.SaveChangesAsync(ct);
 
         userMedia.MediaItem = mediaItem;
+        await InvalidateCalendarCacheAsync(userId, ct);
         return Result.Success(userMedia.ToDto());
     }
 
@@ -96,7 +101,7 @@ public class UserMediaService : IUserMediaService
 
         entity.UpdatedAt = DateTime.UtcNow;
         await _db.SaveChangesAsync(ct);
-
+        await InvalidateCalendarCacheAsync(userId, ct);
         return Result.Success(entity.ToDto());
     }
 
@@ -110,6 +115,7 @@ public class UserMediaService : IUserMediaService
 
         _db.UserMediaItems.Remove(entity);
         await _db.SaveChangesAsync(ct);
+        await InvalidateCalendarCacheAsync(userId, ct);
         return Result.Success();
     }
 
@@ -140,5 +146,13 @@ public class UserMediaService : IUserMediaService
         return entity is null
             ? Result.Failure<UserMediaItemDto>("Entrée introuvable")
             : Result.Success(entity.ToDto());
+    }
+    
+    private async Task InvalidateCalendarCacheAsync(int userId, CancellationToken ct)
+    {
+        for (var days = 1; days <= 60; days++)
+        {
+            await _cache.RemoveAsync($"calendar:user:{userId}:days:{days}", ct);
+        }
     }
 }
