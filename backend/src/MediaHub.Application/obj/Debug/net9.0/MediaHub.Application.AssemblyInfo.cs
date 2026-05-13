@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MediaHub.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e1f0691ab2a289b0f9eea213402d8a329e81ef47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a633b904fb7a438d06666ac7795273b8d002fe4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MediaHub.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MediaHub.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

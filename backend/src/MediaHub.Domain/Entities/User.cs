@@ -9,4 +9,5 @@ public class User : BaseEntity
     public string PasswordHash { get; set; } = string.Empty;
 
     public ICollection<UserMediaItem> Library { get; set; } = new List<UserMediaItem>();
+    public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 }

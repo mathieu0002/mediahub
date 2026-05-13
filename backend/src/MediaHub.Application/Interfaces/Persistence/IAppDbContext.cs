@@ -9,6 +9,7 @@ public interface IAppDbContext
     DbSet<MediaItem> MediaItems { get; }
     DbSet<UserMediaItem> UserMediaItems { get; }
     DbSet<AiringEvent> AiringEvents { get; }
+    DbSet<RefreshToken> RefreshTokens { get; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

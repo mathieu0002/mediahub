@@ -17,3 +17,4 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Infrastructure/obj/Debug/net9.0/ref/MediaHub.Infrastructure.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Infrastructure/bin/Debug/net9.0/MediaHub.Infrastructure.runtimeconfig.json
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Infrastructure/obj/Debug/net9.0/MediaHub.Infrastructure.genruntimeconfig.cache
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Infrastructure/obj/Debug/net9.0/MediaHub.Infrastructure.sourcelink.json

@@ -38,4 +38,20 @@ internal static class AniListGraphQLQueries
             externalLinks { site url type }
           }
         }";
+    
+    public const string GetAiringSchedule = @"
+    query ($id: Int!, $from: Int!, $to: Int!) {
+      Media(id: $id) {
+        id
+        title { romaji english native }
+        coverImage { large }
+        airingSchedule(notYetAired: true, perPage: 25) {
+          nodes {
+            episode
+            airingAt
+            mediaId
+          }
+        }
+      }
+    }";
 }

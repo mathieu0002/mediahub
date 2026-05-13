@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using MediaHub.Application.Interfaces.Caching;
 using MediaHub.Application.Interfaces.Persistence;
 using MediaHub.Application.Interfaces.Providers;
@@ -11,6 +12,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http.Resilience;
 using System.Net.Http.Headers;
 using Npgsql;
+using MediaHub.Application.Interfaces.Services;
+using MediaHub.Application.Services;
+using MediaHub.Infrastructure.Auth;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MediaHub.Infrastructure;
 
@@ -50,7 +58,8 @@ public static class DependencyInjection
         .AddStandardResilienceHandler();
 
         services.AddScoped<IMediaProvider, AniListProvider>();
-
+        services.AddScoped<IUpcomingProvider>(sp => sp.GetRequiredService<AniListProvider>());
+        services.AddScoped<IUpcomingProvider>(sp => sp.GetRequiredService<TmdbProvider>());
         // TMDB
         services.Configure<TmdbOptions>(config.GetSection(TmdbOptions.SectionName));
 
@@ -65,6 +74,33 @@ public static class DependencyInjection
 
         services.AddScoped<IMediaProvider, TmdbProvider>();
 
+        // === Auth ===
+        services.AddHttpContextAccessor();
+        services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
+
+        var jwtOptions = config.GetSection(JwtOptions.SectionName).Get<JwtOptions>()
+                         ?? throw new InvalidOperationException("Jwt config manquante");
+        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+        
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(opt =>
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtOptions.Issuer,
+                    ValidAudience = jwtOptions.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SigningKey)),
+                    ClockSkew = TimeSpan.FromSeconds(30)
+                };
+            });
+
+        services.AddAuthorization();
+        
         return services;
     }
 }

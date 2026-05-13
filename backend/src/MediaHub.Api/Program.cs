@@ -21,7 +21,7 @@ builder.Host.UseSerilog((context, config) => config
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 
-builder.Services.AddApplication();
+builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddSwaggerDocumentation();
@@ -53,33 +53,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseSerilogRequestLogging();
 app.UseCors("DevFront");
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
-// === Seed minimal : user de test pour développer sans auth ===
-await SeedDevUserAsync(app);
-
 app.Run();
-
-// Méthode locale pour seed un user en dev
-static async Task SeedDevUserAsync(WebApplication app)
-{
-    if (!app.Environment.IsDevelopment()) return;
-
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<IAppDbContext>();
-    var dbContext = (DbContext)db;
-
-    if (!await dbContext.Set<User>().AnyAsync())
-    {
-        dbContext.Set<User>().Add(new User
-        {
-            Id = 1,
-            Email = "dev@mediahub.local",
-            Username = "dev",
-            PasswordHash = "dev-no-auth-yet",
-            CreatedAt = DateTime.UtcNow
-        });
-        await db.SaveChangesAsync();
-    }
-}

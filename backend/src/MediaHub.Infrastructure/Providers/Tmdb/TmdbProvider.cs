@@ -10,7 +10,7 @@ using DomainMediaType = MediaHub.Domain.Enums.MediaType;
 
 namespace MediaHub.Infrastructure.Providers.Tmdb;
 
-public class TmdbProvider : IMediaProvider
+public class TmdbProvider : IMediaProvider, IUpcomingProvider
 {
     private readonly HttpClient _http;
     private readonly TmdbOptions _options;
@@ -141,6 +141,84 @@ public class TmdbProvider : IMediaProvider
         ExternalScore = t.VoteAverage
     };
 
+    public async Task<Result<IReadOnlyList<AiringEventDto>>> GetUpcomingAsync(
+    string externalId,
+    DomainMediaType type,
+    DateTime fromUtc,
+    DateTime toUtc,
+    CancellationToken ct = default)
+{
+    // TMDB Movies : pas vraiment de "next episode", on pourrait vérifier la release_date
+    // mais c'est rare qu'un film soit dans ta bibliothèque "Watching" avant sa sortie.
+    // → On gère uniquement les séries pour l'instant.
+    if (type != DomainMediaType.TvShow)
+        return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+    try
+    {
+        var url = $"tv/{externalId}?language={_options.Language}";
+        var tv = await _http.GetFromJsonAsync<TmdbTvDetail>(url, ct);
+        if (tv is null)
+            return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+        // Si la série est terminée, pas la peine de chercher
+        if (tv.Status == "Ended" || tv.Status == "Canceled")
+            return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+        var events = new List<AiringEventDto>();
+
+        // On regarde la saison la plus récente (qui n'est pas la saison 0 = specials)
+        var currentSeason = tv.Seasons
+            .Where(s => s.SeasonNumber > 0)
+            .OrderByDescending(s => s.SeasonNumber)
+            .FirstOrDefault();
+
+        if (currentSeason is null)
+            return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+        var seasonUrl = $"tv/{externalId}/season/{currentSeason.SeasonNumber}?language={_options.Language}";
+        var season = await _http.GetFromJsonAsync<TmdbSeasonDetail>(seasonUrl, ct);
+
+        if (season is null)
+            return Result.Success<IReadOnlyList<AiringEventDto>>(events);
+
+        var title = tv.Name ?? "Sans titre";
+        var coverUrl = string.IsNullOrEmpty(tv.PosterPath)
+            ? null
+            : _options.ImageBaseUrl + tv.PosterPath;
+
+        foreach (var ep in season.Episodes)
+        {
+            if (!DateTime.TryParse(ep.AirDate, out var airDate))
+                continue;
+
+            var airDateUtc = DateTime.SpecifyKind(airDate, DateTimeKind.Utc);
+            if (airDateUtc < fromUtc || airDateUtc > toUtc)
+                continue;
+
+            if (int.TryParse(externalId, out var mediaIdInt))
+            {
+                events.Add(new AiringEventDto
+                {
+                    MediaItemId = mediaIdInt,
+                    Title = $"{title} S{ep.SeasonNumber:D2}",
+                    CoverImageUrl = coverUrl,
+                    EpisodeNumber = ep.EpisodeNumber,
+                    AiringAt = airDateUtc
+                });
+            }
+        }
+
+        IReadOnlyList<AiringEventDto> ordered = events.OrderBy(e => e.AiringAt).ToList();
+        return Result.Success(ordered);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "TMDB upcoming failed for {ExternalId}", externalId);
+        return Result.Failure<IReadOnlyList<AiringEventDto>>($"TMDB error: {ex.Message}");
+    }
+}
+    
     private List<string> ExtractProviders(TmdbWatchProvidersWrapper? wrapper)
     {
         if (wrapper is null || !wrapper.Results.TryGetValue(_options.Region, out var country))

@@ -13,7 +13,7 @@ public class AppDbContext : DbContext, IAppDbContext
     public DbSet<MediaItem> MediaItems => Set<MediaItem>();
     public DbSet<UserMediaItem> UserMediaItems => Set<UserMediaItem>();
     public DbSet<AiringEvent> AiringEvents => Set<AiringEvent>();
-
+    public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -29,6 +29,8 @@ public class TmdbTvDetail
     [JsonPropertyName("number_of_episodes")] public int? NumberOfEpisodes { get; set; }
     [JsonPropertyName("vote_average")] public double VoteAverage { get; set; }
     [JsonPropertyName("watch/providers")] public TmdbWatchProvidersWrapper? WatchProviders { get; set; }
+    [JsonPropertyName("seasons")] public List<TmdbTvSeason> Seasons { get; set; } = new();
+    [JsonPropertyName("status")] public string? Status { get; set; }
 }
 
 public class TmdbGenre
@@ -50,4 +52,25 @@ public class TmdbCountryProviders
 public class TmdbProviderInfo
 {
     [JsonPropertyName("provider_name")] public string ProviderName { get; set; } = string.Empty;
+}
+
+public class TmdbTvEpisode
+{
+    [JsonPropertyName("episode_number")] public int EpisodeNumber { get; set; }
+    [JsonPropertyName("season_number")] public int SeasonNumber { get; set; }
+    [JsonPropertyName("air_date")] public string? AirDate { get; set; }
+    [JsonPropertyName("name")] public string? Name { get; set; }
+}
+
+public class TmdbTvSeason
+{
+    [JsonPropertyName("season_number")] public int SeasonNumber { get; set; }
+    [JsonPropertyName("episode_count")] public int EpisodeCount { get; set; }
+    [JsonPropertyName("air_date")] public string? AirDate { get; set; }
+}
+
+public class TmdbSeasonDetail
+{
+    [JsonPropertyName("season_number")] public int SeasonNumber { get; set; }
+    [JsonPropertyName("episodes")] public List<TmdbTvEpisode> Episodes { get; set; } = new();
 }

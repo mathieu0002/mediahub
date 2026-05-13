@@ -13,11 +13,31 @@ public static class SwaggerConfiguration
             {
                 Title = "MediaHub API",
                 Version = "v1",
-                Description = "API pour le suivi multi-média (anime, manga, films, séries)",
-                Contact = new OpenApiContact
+                Description = "API pour le suivi multi-média (anime, manga, films, séries)"
+            });
+
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Description = "JWT Authorization. Exemple : Bearer eyJhbGc...",
+                Name = "Authorization",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT"
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
                 {
-                    Name = "Mathieu",
-                    Url = new Uri("https://github.com/mathieu0002")
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    Array.Empty<string>()
                 }
             });
 

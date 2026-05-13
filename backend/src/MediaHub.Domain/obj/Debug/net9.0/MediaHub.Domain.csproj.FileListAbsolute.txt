@@ -9,3 +9,4 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/refint/MediaHub.Domain.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.pdb
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/ref/MediaHub.Domain.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Domain/obj/Debug/net9.0/MediaHub.Domain.sourcelink.json

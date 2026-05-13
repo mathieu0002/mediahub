@@ -13,3 +13,4 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Application/obj/Debug/net9.0/refint/MediaHub.Application.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Application/obj/Debug/net9.0/MediaHub.Application.pdb
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Application/obj/Debug/net9.0/ref/MediaHub.Application.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Application/obj/Debug/net9.0/MediaHub.Application.sourcelink.json

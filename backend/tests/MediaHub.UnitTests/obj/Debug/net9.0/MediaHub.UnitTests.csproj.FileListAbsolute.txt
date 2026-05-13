@@ -113,3 +113,8 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Options.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Primitives.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/BCrypt.Net-Next.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Binder.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/bin/Debug/net9.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/tests/MediaHub.UnitTests/obj/Debug/net9.0/MediaHub.UnitTests.sourcelink.json

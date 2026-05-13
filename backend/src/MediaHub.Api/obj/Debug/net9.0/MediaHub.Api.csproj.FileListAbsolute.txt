@@ -159,3 +159,13 @@
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/BCrypt.Net-Next.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/servonnm/Documents/PERSO/Projet/mediahub/backend/src/MediaHub.Api/obj/Debug/net9.0/MediaHub.Api.sourcelink.json

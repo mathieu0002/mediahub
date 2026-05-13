@@ -137,6 +137,44 @@ namespace MediaHub.Infrastructure.Persistence.Migrations
                     b.ToTable("media_items", (string)null);
                 });
 
+            modelBuilder.Entity("MediaHub.Domain.Entities.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("ExpiresAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("RevokedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Token")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("refresh_tokens", (string)null);
+                });
+
             modelBuilder.Entity("MediaHub.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
@@ -240,6 +278,17 @@ namespace MediaHub.Infrastructure.Persistence.Migrations
                     b.Navigation("MediaItem");
                 });
 
+            modelBuilder.Entity("MediaHub.Domain.Entities.RefreshToken", b =>
+                {
+                    b.HasOne("MediaHub.Domain.Entities.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MediaHub.Domain.Entities.UserMediaItem", b =>
                 {
                     b.HasOne("MediaHub.Domain.Entities.MediaItem", "MediaItem")
@@ -262,6 +311,8 @@ namespace MediaHub.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("MediaHub.Domain.Entities.User", b =>
                 {
                     b.Navigation("Library");
+
+                    b.Navigation("RefreshTokens");
                 });
 #pragma warning restore 612, 618
         }

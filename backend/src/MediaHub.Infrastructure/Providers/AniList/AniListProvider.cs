@@ -10,7 +10,7 @@ using DomainMediaType = MediaHub.Domain.Enums.MediaType;
 
 namespace MediaHub.Infrastructure.Providers.AniList;
 
-public class AniListProvider : IMediaProvider
+public class AniListProvider : IMediaProvider, IUpcomingProvider
 {
     private readonly HttpClient _http;
     private readonly ILogger<AniListProvider> _logger;
@@ -143,10 +143,60 @@ public class AniListProvider : IMediaProvider
             ExternalScore = media.AverageScore.HasValue ? media.AverageScore.Value / 10.0 : null
         };
     }
+    
+    public async Task<Result<IReadOnlyList<AiringEventDto>>> GetUpcomingAsync(
+        string externalId,
+        DomainMediaType type,
+        DateTime fromUtc,
+        DateTime toUtc,
+        CancellationToken ct = default)
+    {
+        if (type != DomainMediaType.Anime)
+            return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+        if (!int.TryParse(externalId, out var id))
+            return Result.Failure<IReadOnlyList<AiringEventDto>>("ID AniList invalide");
+
+        var fromUnix = new DateTimeOffset(fromUtc).ToUnixTimeSeconds();
+        var toUnix = new DateTimeOffset(toUtc).ToUnixTimeSeconds();
+
+        var response = await PostGraphQLAsync<AniListAiringData>(
+            AniListGraphQLQueries.GetAiringSchedule,
+            new { id, from = fromUnix, to = toUnix },
+            ct);
+
+        if (response.IsFailure)
+            return Result.Failure<IReadOnlyList<AiringEventDto>>(response.Error!);
+
+        var media = response.Value?.Media;
+        if (media is null)
+            return Result.Success<IReadOnlyList<AiringEventDto>>([]);
+
+        var title = media.Title?.English
+                    ?? media.Title?.Romaji
+                    ?? media.Title?.Native
+                    ?? "Sans titre";
+
+        var events = (media.AiringSchedule?.Nodes ?? [])
+            .Where(n => n.AiringAt >= fromUnix && n.AiringAt <= toUnix)
+            .Select(n => new AiringEventDto
+            {
+                MediaItemId = id,
+                Title = title,
+                CoverImageUrl = media.CoverImage?.Large,
+                EpisodeNumber = n.Episode,
+                AiringAt = DateTimeOffset.FromUnixTimeSeconds(n.AiringAt).UtcDateTime
+            })
+            .OrderBy(e => e.AiringAt)
+            .ToList();
+
+        return Result.Success<IReadOnlyList<AiringEventDto>>(events);
+    }
 
     private static string? CleanHtml(string? input)
     {
         if (string.IsNullOrWhiteSpace(input)) return null;
         return System.Text.RegularExpressions.Regex.Replace(input, "<.*?>", string.Empty);
     }
+    
 }
