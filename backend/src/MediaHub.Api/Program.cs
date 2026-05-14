@@ -41,20 +41,25 @@ var app = builder.Build();
 // === Pipeline ===
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
+
+app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "MediaHub API v1");
         c.RoutePrefix = "swagger";
     });
-}
 
 app.UseSerilogRequestLogging();
 app.UseCors("DevFront");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// Applique les migrations EF Core au démarrage (utile pour Docker)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<MediaHub.Infrastructure.Persistence.AppDbContext>();
+    await db.Database.MigrateAsync();
+}
 
 app.Run();

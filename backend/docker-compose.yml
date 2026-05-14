@@ -1,0 +1,67 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: mediahub-postgres
+    environment:
+      POSTGRES_USER: mediahub
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-dev}
+      POSTGRES_DB: mediahub
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mediahub"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mediahub-net
+
+  redis:
+    image: redis:7-alpine
+    container_name: mediahub-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    networks:
+      - mediahub-net
+
+  api:
+    build:
+      context: .
+      dockerfile: src/MediaHub.Api/Dockerfile
+    container_name: mediahub-api
+    ports:
+      - "5087:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=mediahub;Username=mediahub;Password=${POSTGRES_PASSWORD:-dev}"
+      ConnectionStrings__Redis: "redis:6379"
+      Tmdb__ApiKey: ${TMDB_API_KEY}
+      Tmdb__BaseUrl: "https://api.themoviedb.org/3"
+      Tmdb__Region: "FR"
+      Tmdb__Language: "fr-FR"
+      Jwt__Issuer: "MediaHub"
+      Jwt__Audience: "MediaHub"
+      Jwt__SigningKey: ${JWT_SIGNING_KEY}
+      Jwt__AccessTokenMinutes: "15"
+      Jwt__RefreshTokenDays: "7"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - mediahub-net
+
+volumes:
+  pgdata:
+
+networks:
+  mediahub-net:
+    driver: bridge
