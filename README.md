@@ -1,6 +1,6 @@
 <<<<<<< Updated upstream
 # MediaHub API
-
+[![CI](https://github.com/mathieu0002/mediahub/actions/workflows/ci.yml/badge.svg)](https://github.com/mathieu0002/mediahub/actions/workflows/ci.yml)
 Backend .NET 9 pour le suivi multi-média (anime, manga, films, séries).
 
 ## Architecture
