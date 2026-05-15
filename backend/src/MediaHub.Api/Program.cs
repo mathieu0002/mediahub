@@ -53,6 +53,7 @@ app.UseSerilogRequestLogging();
 app.UseCors("DevFront");
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapGet("/", () => Results.Redirect("/swagger"));
 app.MapControllers();
 
 // Applique les migrations EF Core au démarrage (utile pour Docker)
